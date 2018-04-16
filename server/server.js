@@ -39,6 +39,7 @@ module.exports = class ServerApp {
 
     this.app.get('/', handlers.instapage.home);
     this.app.get('/api/v1/landing-pages/', handlers.instapage.getAllLandingPages(db));
+    this.app.post('/api/v1/landing-pages/', handlers.instapage.createLandingPage(db));
 
     this.app.get('/ping', handlers.health.pong);
     this.app.get('/health', handlers.health.healthCheck);

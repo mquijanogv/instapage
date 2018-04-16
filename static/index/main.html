@@ -1,3 +1,13 @@
 <h1 ng-click='clicked()'>Instage Page App</h1>
-<h2>My Landing Pages</h2>
-<h3>{{landingpages}}</h3>
+<h3>My Landing Pages</h3>
+<div ng-show="hasContent()" >
+  <ul>
+    <li ng-repeat="landingPage in landingpages">
+      {{landingPage.name}}&nbsp;&nbsp;&nbsp;
+      {{landingPage.version}}&nbsp;&nbsp;&nbsp;
+      {{landingPage.slug}}&nbsp;&nbsp;&nbsp;
+      <button>Update Slug</button>
+    </li>
+  </ul>
+</div>
+<button ng-click="newLandingPage()">Create New Landing Page</button>

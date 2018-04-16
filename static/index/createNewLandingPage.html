@@ -1,0 +1,23 @@
+<div style="margin:2em">
+  <h1>New Landing Page ({{template}})</h1>
+  <div>
+    <label for="contactChoice1">Name: </label><br />
+    <input type="text" id="contactChoice1" name="contact" value="Landing Page Name" ng-model="formContent.name"><br />
+
+    <label for="contactChoice1">Slug: </label><br />
+    <input type="text" id="contactChoice1" name="contact" value="Slug" ng-model="formContent.slug"><br /><br />
+
+  <p>Please Fill in Landing Page Content</p>
+  <label for="contactChoice1">Header 1 </label><br />
+  <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.content.header"><br />
+
+  <label for="textArea1">Paragraph </label><br />
+  <textarea id=textArea1 rows="4" cols="50" ng-model="formContent.content.paragraph">paragraph...</textarea><br />
+
+  <label for="contactChoice1">Button Text </label><br />
+  <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.content.buttonText"><br />
+
+  </div>
+  <br />
+  <button ng-click="submitForm()" type="submit">Submit</button>
+</div>

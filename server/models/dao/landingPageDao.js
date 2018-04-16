@@ -13,6 +13,20 @@ function getAllLandingPages (db) {
   })
 }
 
+function insertLandingPage (db, content) {
+  return new Promise((resolve, reject) => {
+    const collection = db.collection('landingpages');
+    collection.insert(content, function(err, result) {
+      if (!err) {
+        resolve(result);
+      } else {
+        reject(err);
+      }
+    });
+  })
+}
+
 module.exports = {
-    getAllLandingPages: getAllLandingPages
+    getAllLandingPages: getAllLandingPages,
+    insertLandingPage: insertLandingPage
 };
