@@ -5,10 +5,10 @@ function home (req, res) {
 }
 // Obtain all landing pages
 function getAllLandingPages(db) {
-  return (req, res) => {
+  return (request, response) => {
     dao.getAllLandingPages(db)
     .then((docs) => {
-      res.status(200).json(docs);
+      response.status(200).json(docs);
     }).catch((err) => {
       console.log(err);
     })
@@ -17,8 +17,8 @@ function getAllLandingPages(db) {
 
 // Insert a new landing page
 function createLandingPage(db) {
-  return (req, res) => {
-    dao.insertLandingPage(db,req.body)
+  return (request, response) => {
+    dao.insertLandingPage(db,request.body)
     .then((res) => {
       console.log(res.result)
     }).catch((err) => {
@@ -27,8 +27,21 @@ function createLandingPage(db) {
   }
 }
 
+function showLandingPage(db) {
+  return (request, response) => {
+    dao.findLandingPage(db, request.params.slug)
+    .then((res) => {
+      console.log(res[0].content)
+      response.render(res[0].template,{locals: {res: res}});
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
 module.exports = {
     home:home,
     getAllLandingPages: getAllLandingPages,
-    createLandingPage: createLandingPage
+    createLandingPage: createLandingPage,
+    showLandingPage: showLandingPage
 };

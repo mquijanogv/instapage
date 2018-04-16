@@ -55,7 +55,7 @@ app.config(function($routeProvider) {
     content: {
       header1:"",
       paragraph:"",
-      buttonText:"",
+      button:"",
     }
   }
   $scope.submitForm = submitForm;
