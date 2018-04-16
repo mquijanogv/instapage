@@ -6,9 +6,10 @@ module.exports = class ServerApp {
 
   constructor() {
   // External Dependices will be initialized here
+  this.db = null;
   }
 
-  start() {
+  start(db) {
 
       this.app = express();
 
@@ -18,16 +19,18 @@ module.exports = class ServerApp {
       this.app.set('view engine', 'html');
       this.app.use(express.static('static'))
 
-      this._configRoute();
+      this.db = db;
+
+      this._configRoute(this.db);
       // TODO: port will based on config file
       const port = 3001;
 
       return this.app.listen(port, () => {
-          console.log("Server is running on 3000");
+          console.log("Server is running on 3001");
       });
   }
 
-  _configRoute() {
+  _configRoute(db) {
 
     const handlers = {
       health: require('./controllers/healthCtrl'),
@@ -35,6 +38,7 @@ module.exports = class ServerApp {
     };
 
     this.app.get('/', handlers.instapage.home);
+    this.app.get('/api/v1/landing-pages/', handlers.instapage.getAllLandingPages(db));
 
     this.app.get('/ping', handlers.health.pong);
     this.app.get('/health', handlers.health.healthCheck);
