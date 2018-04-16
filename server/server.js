@@ -8,7 +8,7 @@ module.exports = class ServerApp {
   // External Dependices will be initialized here
   }
 
-  start(mongoose) {
+  start() {
 
       this.app = express();
 
@@ -29,8 +29,14 @@ module.exports = class ServerApp {
 
   _configRoute() {
 
-    this.app.get('/', function(req, res) {
-      res.send({OK:"200"});
-    })
+    const handlers = {
+      health: require('./controllers/healthCtrl'),
+      instapage: require('./controllers/instapageCtrl')
+    };
+
+    this.app.get('/', handlers.instapage.home);
+
+    this.app.get('/ping', handlers.health.pong);
+    this.app.get('/health', handlers.health.healthCheck);
   }
 }
