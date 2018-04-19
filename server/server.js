@@ -4,12 +4,13 @@ const es6Renderer = require('express-es6-template-engine');
 
 module.exports = class ServerApp {
 
-  constructor() {
+  constructor(config, db) {
   // External Dependices will be initialized here
-  this.db = null;
+  this.db = db;
+  this.config = config;
   }
 
-  start(db) {
+  start() {
 
       this.app = express();
 
@@ -19,14 +20,12 @@ module.exports = class ServerApp {
       this.app.set('view engine', 'html');
       this.app.use(express.static('static'))
 
-      this.db = db;
+      // this.db = db;
 
       this._configRoute(this.db);
-      // TODO: port will based on config file
-      const port = 3001;
 
-      return this.app.listen(port, () => {
-          console.log("Server is running on 3001");
+      return this.app.listen(this.config.PORT, () => {
+          console.log(`Server is running on port ${this.config.PORT}`);
       });
   }
 

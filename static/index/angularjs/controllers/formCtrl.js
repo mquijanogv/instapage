@@ -32,7 +32,7 @@ function obtainTemplateObject(template) {
       break;
     case "template2":
     return {
-      section1: {
+      header: {
         navbarbrand:"",
         navlink1:"",
         navlink2:"",
@@ -52,7 +52,7 @@ function obtainTemplateObject(template) {
         copyRight:"",
         bottomNavItem1:"",
         ottomNavItem2:"",
-        ottomNavItem3:"",
+        bottomNavItem3:"",
 
       }
     }
