@@ -1,21 +1,25 @@
+<div id="outer">
+  <div style="display: table;margin: 0 auto; margin-top:10%;">
 <h1>Landing Page Options</h1>
 <form>
   <p>Please select your landing page template:</p>
-  <div>
+  <div style="display: inline-block">
     <input type="radio" id="contactChoice1"
      name="contact" value="template1" ng-model="template.version" checked="checked">
-    <label for="contactChoice1">Template 1</label>
+     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg"><br />
 
     <input type="radio" id="contactChoice2"
      name="contact" value="template2" ng-model="template.version">
-    <label for="contactChoice2">Template 2</label>
+     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg"><br />
 
     <input type="radio" id="contactChoice3"
      name="contact" value="template3" ng-model="template.version">
-    <label for="contactChoice3">Template 3</label>
+     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg"><br />
   </div>
   <div>
     <button ng-click="goToForm(template.version)">Next</button>
   </div>
   {{template.version}}
 </form>
+</div>
+</div>

@@ -1,16 +1,19 @@
 <div id="outer">
-  <div style="display: table;margin: 0 auto; margin-top:10%;">
+  <div style="display: table;margin: 0 auto;">
     <h1 ng-click='clicked()'>InstaPage Mock App</h1>
+    <button ng-click="newLandingPage()">Create New Landing Page</button>
     <h2>My Landing Pages: </h2>
     <div ng-show="hasContent()" >
       <ul style="list-style-type: none;">
-        <li style="background-color:#D3D3D3" ng-repeat="landingPage in landingpages">
-          <h4><b>Name: </b> {{landingPage.name}}&nbsp;&nbsp; <b>Template: </b>{{landingPage.template}}&nbsp;&nbsp; <b>Slug: </b> {{landingPage.slug}}</h4>
+        <li style="background-color:#f0ecec" ng-repeat="landingPage in landingpages">
+          <h4><b>Name: </b> {{landingPage.name}}</h4>
+          <h4><b>Template: </b>{{landingPage.template}}</p>
+          <h4><b>Slug: </b>{{landingPage.slug}}</p>
+          <h4><b>Preview: </b>{{landingPage.content.paragraph}}</p>
           <p><a href="/pages/{{landingPage.slug}}">Link to Landing Page</a></p>
           <p><a href="/pages/{{landingPage.slug}}">Edit Landing Page</a></p>
         </li>
       </ul>
     </div>
-    <button ng-click="newLandingPage()">Create New Landing Page</button>
   </div>
 </div>
