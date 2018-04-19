@@ -15,15 +15,36 @@ function getAllLandingPages(db) {
 
 function insertLandingPage(db, content) {
   return new Promise((resolve, reject) => {
+    checkSlugDup(db, content.slug)
+    .then((res) => {
+      if (res.length > 0) {
+        reject({errors:"Duplicate"});
+      }
+      const collection = db.collection(COLLECTION);
+      collection.insert(content, function(err, result) {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+    }).catch((err) => {
+      reject(err);
+    })
+  });
+}
+
+function checkSlugDup(db, slug) {
+  return new Promise((resolve, reject) => {
     const collection = db.collection(COLLECTION);
-    collection.insert(content, function(err, result) {
+    collection.find({"slug":slug}).toArray(function(err, docs) {
       if (!err) {
-        resolve(result);
+        resolve(docs);
       } else {
         reject(err);
       }
-    });
-  });
+    })
+  })
 }
 
 function findLandingPage(db, slug) {

@@ -22,8 +22,12 @@ function createLandingPage(db) {
     request.body.visits=0;
     dao.insertLandingPage(db,request.body)
     .then((res) => {
+      res.errors = false;
       response.status(200).json(res);
     }).catch((err) => {
+      if(err.errors == "Duplicate") {
+        response.status(200).json(err)
+      }
       response.status(500);
       console.log(err)
     })

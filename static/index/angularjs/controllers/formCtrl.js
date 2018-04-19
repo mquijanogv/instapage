@@ -1,5 +1,4 @@
 app.controller('formCtrl', function($scope, $http, $location, $routeParams, dataServices, AppDataState) {
-  console.log($routeParams.id)
   var basicTemplateInfo = {
     name:"",
     slug:"",
@@ -15,11 +14,17 @@ app.controller('formCtrl', function($scope, $http, $location, $routeParams, data
   function submitForm() {
     dataServices.createLandingPage($scope.formContent)
     .then(function(res) {
-      if(res.status === 200 && res.data.insertedCount === 1) {
+      if(res.status === 200 && res.data.errors === false) {
         AppDataState.service.flash = true;
         $location.path('/');
+      } else if (res.status === 200 && res.data.errors === "Duplicate") {
+        console.warn("Duplicate slug")
+        window.alert("Duplicate Slug")
       }
-    })
+    }).catch(function(err) {
+        console.warn("Server Error");
+        window.alert("Server Error");
+    });
   }
 });
 
