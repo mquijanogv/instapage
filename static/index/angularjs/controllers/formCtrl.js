@@ -1,4 +1,4 @@
-app.controller('formCtrl', function($scope, $http, $location, $routeParams, dataServices) {
+app.controller('formCtrl', function($scope, $http, $location, $routeParams, dataServices, AppDataState) {
   console.log($routeParams.id)
   var basicTemplateInfo = {
     name:"",
@@ -7,14 +7,18 @@ app.controller('formCtrl', function($scope, $http, $location, $routeParams, data
   }
   $scope.formContent = Object.assign(basicTemplateInfo,obtainTemplateObject($routeParams.id));
   $scope.template = $routeParams.id;
-  console.log($scope.formContent)
+  $scope.errors = false;
+  $scope.errorList = [];
   $scope.submitForm = submitForm;
   $scope.obtainTemplateObject;
 
   function submitForm() {
     dataServices.createLandingPage($scope.formContent)
     .then(function(res) {
-      console.log(res)
+      if(res.status === 200 && res.data.insertedCount === 1) {
+        AppDataState.service.flash = true;
+        $location.path('/');
+      }
     })
   }
 });
