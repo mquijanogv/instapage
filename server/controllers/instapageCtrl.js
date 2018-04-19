@@ -18,6 +18,8 @@ function getAllLandingPages(db) {
 // Insert a new landing page
 function createLandingPage(db) {
   return (request, response) => {
+    // Set number of visits to 0
+    request.body.visits=0;
     dao.insertLandingPage(db,request.body)
     .then((res) => {
       console.log(res.result)
@@ -29,13 +31,18 @@ function createLandingPage(db) {
 
 function showLandingPage(db) {
   return (request, response) => {
-    dao.findLandingPage(db, request.params.slug)
+    dao.incrementVisitCounter(db, request.params.slug)
     .then((res) => {
-      console.log(res[0].content)
-      response.render(res[0].template,{locals: {res: res}});
+      dao.findLandingPage(db, request.params.slug)
+      .then((res) => {
+        console.log(res[0].content)
+        response.render(res[0].template,{locals: {res: res}});
+      }).catch((err) => {
+        console.log(err);
+      })
     }).catch((err) => {
       console.log(err);
-    })
+    });
   }
 }
 
