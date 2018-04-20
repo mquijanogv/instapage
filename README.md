@@ -1,6 +1,6 @@
 # Instapage #
 
-Landing Page application created using Mean Stack
+Landing Page application created using the Mean Stack
 ### Requirements ###
 
 * Mongo DB
