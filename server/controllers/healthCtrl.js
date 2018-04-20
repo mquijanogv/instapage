@@ -1,3 +1,4 @@
+// Health Controller
 module.exports = {
     pong:pong,
     healthCheck:healthCheck

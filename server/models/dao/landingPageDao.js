@@ -1,5 +1,6 @@
 const COLLECTION = 'landingpages';
 
+// Obtain all landing pages from the DB
 function getAllLandingPages(db) {
   return new Promise((resolve, reject) => {
     const collection = db.collection(COLLECTION);
@@ -13,6 +14,7 @@ function getAllLandingPages(db) {
   });
 }
 
+// Insert a landing page to the DB
 function insertLandingPage(db, content) {
   return new Promise((resolve, reject) => {
     checkSlugDup(db, content.slug)
@@ -34,6 +36,7 @@ function insertLandingPage(db, content) {
   });
 }
 
+// Check for duplicate slugs
 function checkSlugDup(db, slug) {
   return new Promise((resolve, reject) => {
     const collection = db.collection(COLLECTION);
@@ -47,6 +50,7 @@ function checkSlugDup(db, slug) {
   })
 }
 
+// Find a landing page in the DB
 function findLandingPage(db, slug) {
   return new Promise((resolve, reject) => {
     const collection = db.collection(COLLECTION);
@@ -60,6 +64,7 @@ function findLandingPage(db, slug) {
   });
 }
 
+// Increment Visit counter in the DB
 function incrementVisitCounter(db, slug) {
   return new Promise((resolve, reject) => {
     const collection = db.collection(COLLECTION);
@@ -73,6 +78,7 @@ function incrementVisitCounter(db, slug) {
   });
 }
 
+// Update specific slug in the DB
 function updateSlug(db, id, slug) {
   return new Promise((resolve, reject) => {
     const collection = db.collection(COLLECTION);

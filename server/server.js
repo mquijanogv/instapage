@@ -36,6 +36,7 @@ module.exports = class ServerApp {
       instapage: require('./controllers/instapageCtrl')
     };
 
+    // Application endpoints
     this.app.get('/', handlers.instapage.home);
     this.app.get('/api/v1/landing-pages/', handlers.instapage.getAllLandingPages(db));
     this.app.post('/api/v1/landing-pages/', handlers.instapage.createLandingPage(db));

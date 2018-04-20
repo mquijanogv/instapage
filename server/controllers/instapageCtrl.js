@@ -1,5 +1,7 @@
+// instapage controller
 const dao = require('../models/dao/landingPageDao');
 
+// Render angular app
 function home (req, res) {
   res.render('index');
 }
@@ -28,19 +30,18 @@ function createLandingPage(db) {
       if(err.errors == "Duplicate") {
         response.status(200).json(err)
       }
-      response.status(500);
+      response.status(500).json(err);
       console.log(err)
     })
   }
 }
-
+// Render a specific landing page
 function showLandingPage(db) {
   return (request, response) => {
     dao.incrementVisitCounter(db, request.params.slug)
     .then((res) => {
       dao.findLandingPage(db, request.params.slug)
       .then((res) => {
-        console.log(res[0].content)
         response.render(res[0].template,{locals: {res: res}});
       }).catch((err) => {
         console.log(err);
@@ -51,6 +52,7 @@ function showLandingPage(db) {
   }
 }
 
+// update slug of a specific landing page
 function updateSlug(db) {
   return (request, response) => {
     dao.updateSlug(db, request.params.id, request.query.newSlug )

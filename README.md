@@ -1,29 +1,23 @@
-# README #
+# Instapage #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Landing Page application created using Mean Stack
+### Requirements ###
 
-### What is this repository for? ###
+* Mongo DB
+* Node JS
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Getting Stated ###
 
-### How do I get set up? ###
+1. In a separate terminal window run mongodb `sudo mongod`
+2. Run `npm install` in the root directory of the app.
+3. Start app by running `./scripts/start_app.sh`
+4. Test app by going to `http://localhost:5000/health` and `http://localhost:5000/ping`
+5. Start using app by going to `http://localhost:5000`
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Tests ###
 
-### Contribution guidelines ###
+* Coming soon
 
-* Writing tests
-* Code review
-* Other guidelines
+### Start with Docker ###
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Coming soon
