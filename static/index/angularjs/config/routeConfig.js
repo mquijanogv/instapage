@@ -14,5 +14,5 @@ app.config(function($routeProvider) {
   }).when("/newLandingPage/:id", {
     templateUrl: "index/createNewLandingPage.html",
     controller: "formCtrl as formCtrl"
-  })
-})
+  });
+});

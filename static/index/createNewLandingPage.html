@@ -13,8 +13,9 @@
         <input type="text" id="contactChoice1" name="contact" value="Slug" ng-model="formContent.slug"><br /><br />
 
       <p>Please Fill in Landing Page Content</p>
-      <p><strong>Header</strong></p>
       <div ng-show="template === 'template1'">
+        <a ng-click="openPreview(template)" href="">Preview</a>
+        <h3><strong>Header</strong></h3>
         <label for="contactChoice1">Header 1 </label><br />
         <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.content.header1"><br />
 
@@ -26,6 +27,8 @@
 
       </div>
       <div ng-show="template === 'template2'">
+        <a href="">Preview</a>
+        <h3><strong>Header</strong></h3>
         <label for="contactChoice1">Nav Bar Brand </label><br />
         <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.header.navbarbrand"><br />
 
@@ -45,21 +48,64 @@
         <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.header.button"><br />
         <fieldset>
 
-
-        <label for="textArea1">Header </label><br />
+        <h3><strong>Section 2</strong></h3>
+        <label>Header </label><br />
         <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.section2.header"><br />
         <label for="textArea1">Paragraph </label><br />
-        <textarea id=textArea1 rows="4" cols="50" ng-model="formContent.section.paragraph"></textarea><br />
-        </fieldset>
+        <textarea id=textArea1 rows="4" cols="50" ng-model="formContent.section2.paragraph"></textarea><br />
+
+        <h3><strong>Section 3</strong></h3>
         <label for="textArea1">Header </label><br />
-        <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.section2.header"><br />
-        {{formContent.content.navlink3}}
+        <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.section3.header"><br />
+        <label for="textArea1">Button </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.section3.button"><br />
 
+        <h3><strong>Footer</strong></h3>
+        <label for="textArea1">Copy Right </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.footer.copyRight"><br />
+        <label for="textArea1">Footer NavItem1 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.footer.bottomNavItem1"><br />
+        <label for="textArea1">Footer NavItem2 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.footer.bottomNavItem2"><br />
+        <label for="textArea1">Footer NavItem3 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="Button text" ng-model="formContent.footer.bottomNavItem3"><br />
       </div>
+      <!-- Header Elements -->
+      <div ng-show="template === 'template3'">
+        <h3><strong>Footer</strong></h3>
+        <label for="contactChoice1">Nav Bar Brand </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.header.navbarbrand"><br />
+        <label for="contactChoice1">Nav Item 1 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.header.navItem1"><br />
+        <label for="contactChoice1">Nav Item 2 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.header.navItem2"><br />
+        <label for="contactChoice1">Header 1 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.header.header1"><br />
+        <label for="contactChoice1">Header 2 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.header.header2"><br />
+        <!-- Quick Links -->
+        <label for="contactChoice1">Quick Link 1 Header 1 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.quicklink1.header"><br />
+        <label for="contactChoice1">Quick Link 1 Paragraph </label><br />
+        <textarea id=textArea1 rows="4" cols="50" ng-model="formContent.quicklink1.paragraph"></textarea><br />
 
-        <br />
-        <button ng-click="submitForm()">Submit</button>
+        <label for="contactChoice1">Quick Link 2 Header 1 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.quicklink2.header"><br />
+        <label for="contactChoice1">Quick Link 2 Paragraph </label><br />
+        <textarea id=textArea1 rows="4" cols="50" ng-model="formContent.quicklink2.paragraph"></textarea><br />
+
+        <label for="contactChoice1">Quick Link 3 Header 1 </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.quicklink3.header"><br />
+        <label for="contactChoice1">Quick Link 3 Paragraph </label><br />
+        <textarea id=textArea1 rows="4" cols="50" ng-model="formContent.quicklink3.paragraph"></textarea><br />
+
+        <!-- Foooter -->
+        <label for="contactChoice1">Footer Copy Right </label><br />
+        <input type="text" id="contactChoice1" name="contact" value="header" ng-model="formContent.footer.copyRight"><br />
+
       </div>
     </div>
+    <br />
+    <button ng-click="submitForm()">Submit</button>
   </div>
 </div>

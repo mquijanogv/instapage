@@ -4,22 +4,28 @@
 <form>
   <p>Please select your landing page template:</p>
   <div style="display: inline-block">
+
     <input type="radio" id="contactChoice1"
      name="contact" value="template1" ng-model="template.version" checked="checked">
-     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg"><br />
+     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg">
+       Template 1
+     <br />
 
     <input type="radio" id="contactChoice2"
      name="contact" value="template2" ng-model="template.version">
-     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg"><br />
+     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg">
+     Template 2
+     <br />
 
     <input type="radio" id="contactChoice3"
      name="contact" value="template3" ng-model="template.version">
-     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg"><br />
+     <img style="width:100px; height:100px" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg">
+     Template 3
+     <br />
   </div>
-  <div>
+  <div><br />
     <button ng-click="goToForm(template.version)">Next</button>
   </div>
-  {{template.version}}
 </form>
 </div>
 </div>

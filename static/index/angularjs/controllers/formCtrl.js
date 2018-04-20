@@ -1,4 +1,4 @@
-app.controller('formCtrl', function($scope, $http, $location, $routeParams, dataServices, AppDataState) {
+app.controller('formCtrl', function($scope, $http, $location, $routeParams, dataServices, AppDataState, $window) {
   var basicTemplateInfo = {
     name:"",
     slug:"",
@@ -9,9 +9,14 @@ app.controller('formCtrl', function($scope, $http, $location, $routeParams, data
   $scope.errors = false;
   $scope.errorList = [];
   $scope.submitForm = submitForm;
+  $scope.openPreview = openPreview;
   $scope.obtainTemplateObject;
 
   function submitForm() {
+    if($scope.formContent.slug === "" || $scope.formContent.name === "" ) {
+      $window.alert("Missing Slug/ Name");
+      return;
+    }
     dataServices.createLandingPage($scope.formContent)
     .then(function(res) {
       if(res.status === 200 && res.data.errors === false) {
@@ -19,14 +24,21 @@ app.controller('formCtrl', function($scope, $http, $location, $routeParams, data
         $location.path('/');
       } else if (res.status === 200 && res.data.errors === "Duplicate") {
         console.warn("Duplicate slug")
-        window.alert("Duplicate Slug")
+        $window.alert("Duplicate Slug")
       }
     }).catch(function(err) {
         console.warn("Server Error");
-        window.alert("Server Error");
+        $window.alert("Server Error");
     });
   }
+
+  function openPreview() {
+    $window.open("/", "popup", "width=1000,height=1000,left=1000,top=150");
+  }
 });
+
+
+
 
 function obtainTemplateObject(template) {
   switch(template) {
@@ -60,10 +72,38 @@ function obtainTemplateObject(template) {
       footer: {
         copyRight:"",
         bottomNavItem1:"",
-        ottomNavItem2:"",
+        bottomNavItem2:"",
         bottomNavItem3:"",
 
       }
+    }
+    break;
+    case "template3":
+    return {
+      header:{
+        navbarbrand:"",
+        navItem1:"",
+        navItem2:"",
+        header1:"",
+        header2:"",
+
+      },
+      quicklink1:{
+        header:"",
+        paragraph:""
+      },
+      quicklink2:{
+        header:"",
+        paragraph:""
+      },
+      quicklink3:{
+        header:"",
+        paragraph:""
+      },
+      footer:{
+        copyRight:""
+      }
+
     }
   }
 }
