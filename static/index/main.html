@@ -8,7 +8,7 @@
       <ul style="list-style-type: none;">
         <li style="background-color:#f0ecec" ng-repeat="landingPage in landingpages">
           <p><a href="/pages/{{landingPage.slug}}">Preview Landing Page</a></p>
-          <p><a href="/pages/{{landingPage.slug}}">Edit Landing Page</a></p>
+          <p><a ng-click="updateSlug(landingPage.slug)">Edit Slug</a></p>
           <h4><b>Name: </b>{{landingPage.name}}</h4>
           <h4><b>Template: </b>{{landingPage.template}}</p>
           <h4><b>Slug: </b>{{landingPage.slug}}</p>

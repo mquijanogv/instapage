@@ -5,6 +5,9 @@ app.factory("dataServices", function($http){
         },
         createLandingPage: function(formContent) {
           return $http.post("api/v1/landing-pages", formContent)
+        },
+        updateSlug: function(newSlug, oldSlug) {
+          return $http.put("api/v1/landing-pages/"+oldSlug +"?newSlug="+newSlug)
         }
     };
 });

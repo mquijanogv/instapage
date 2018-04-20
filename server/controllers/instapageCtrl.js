@@ -51,9 +51,23 @@ function showLandingPage(db) {
   }
 }
 
+function updateSlug(db) {
+  return (request, response) => {
+    dao.updateSlug(db, request.params.id, request.query.newSlug )
+    .then((res) => {
+      response.status(200).json();
+    }).catch((err) => {
+      console.log(err)
+    });
+
+  }
+
+}
+
 module.exports = {
     home:home,
     getAllLandingPages: getAllLandingPages,
     createLandingPage: createLandingPage,
-    showLandingPage: showLandingPage
+    showLandingPage: showLandingPage,
+    updateSlug:updateSlug
 };

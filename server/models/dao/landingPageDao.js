@@ -73,9 +73,25 @@ function incrementVisitCounter(db, slug) {
   });
 }
 
+function updateSlug(db, id, slug) {
+  return new Promise((resolve, reject) => {
+    const collection = db.collection(COLLECTION);
+    collection.updateOne({ slug : id  }
+    , { $set: { slug : slug } }, function(err, result) {
+      if(!err){
+        resolve(result);
+      } else {
+        reject(err);
+      }
+  })
+
+  });
+}
+
 module.exports = {
     getAllLandingPages: getAllLandingPages,
     insertLandingPage: insertLandingPage,
     findLandingPage: findLandingPage,
-    incrementVisitCounter: incrementVisitCounter
+    incrementVisitCounter: incrementVisitCounter,
+    updateSlug: updateSlug
 };
